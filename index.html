@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard S.A. | Infraestructura Tecnológica para E-commerce</title>
+    <meta name="description" content="Standard S.A. - Infraestructura tecnológica robusta para E-commerce en Paraguay. Pasarelas de pago, logística, ERP y omnicanalidad.">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="dark-theme">
+    <div class="bg-grid"></div>
+    <div class="glow-orb top-left"></div>
+    <div class="glow-orb bottom-right"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand" aria-label="Inicio">
+                <i class="ph ph-hexagon-fill brand-icon" aria-hidden="true"></i>
+                <span class="brand-name">Standard S.A.</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#clientes">Clientes</a></li>
+                <li><a href="#portafolio">Ecosistema</a></li>
+                <li><a href="#diferenciador">Tecnología</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+            </ul>
+            <a href="#contacto" class="btn btn-primary btn-sm nav-cta">Contactar Ventas</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="badge">Infraestructura Tecnológica B2B</div>
+                    <h1 class="hero-title">El nuevo estándar<br>del <span class="text-gradient">E-commerce</span><br>en Paraguay</h1>
+                    <p class="hero-description">Desarrollamos ecosistemas agnósticos integrados nativamente con todo el parque logístico y financiero del país. De la web a la puerta de tu cliente.</p>
+                    <div class="hero-actions">
+                        <a href="#portafolio" class="btn btn-primary">Explorar Soluciones <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+                        <a href="#diferenciador" class="btn btn-outline">Conocer Arquitectura</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="abstract-dashboard">
+                        <div class="dash-header">
+                            <div class="dots"><span></span><span></span><span></span></div>
+                            <div class="url">api.standardsa.com/v1/sync</div>
+                        </div>
+                        <div class="dash-body">
+                            <div class="code-block">
+                                <span class="keyword">const</span> <span class="variable">standard</span> = <span class="keyword">new</span> <span class="class">StandardGateway</span>({<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;tenant: <span class="string">'b2b-client'</span>,<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;agnostic: <span class="boolean">true</span><br>
+                                });
+                                <br><br>
+                                <span class="function">await</span> standard.initEcosystem();
+                                <br><br>
+                                <span class="comment">// Status: All systems operational</span>
+                            </div>
+                            <div class="stats-row">
+                                <div class="stat-card">
+                                    <i class="ph ph-credit-card" aria-hidden="true"></i>
+                                    <span>Payments</span>
+                                    <div class="status-dot success"></div>
+                                </div>
+                                <div class="stat-card">
+                                    <i class="ph ph-truck" aria-hidden="true"></i>
+                                    <span>Logistics</span>
+                                    <div class="status-dot success"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof -->
+        <section id="clientes" class="clients">
+            <div class="container container-sm">
+                <p class="section-subtitle text-center">Impulsando la infraestructura de los líderes del mercado</p>
+                <div class="clients-grid">
+                    <div class="client-logo">Farmacia Vicente Scavone</div>
+                    <div class="client-logo">Énfasis Visual</div>
+                    <div class="client-logo">Granel</div>
+                    <div class="client-logo">Renova Padel</div>
+                    <div class="client-logo">Kids</div>
+                    <div class="client-logo">Corazón de Melón Store</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Metrics -->
+        <section id="metricas" class="metrics">
+            <div class="container">
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-number-wrapper"><span class="metric-number" data-target="99.99">0</span><span class="metric-symbol">%</span></div>
+                        <p class="metric-label">Uptime Garantizado</p>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number-wrapper"><span class="metric-symbol">+</span><span class="metric-number" data-target="150">0</span><span class="metric-symbol">M</span></div>
+                        <p class="metric-label">Procesados en 2025 (USD)</p>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number-wrapper"><span class="metric-symbol">&lt;</span><span class="metric-number" data-target="100">0</span><span class="metric-symbol">ms</span></div>
+                        <p class="metric-label">Latencia de API</p>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number-wrapper"><span class="metric-number">PCI-DSS</span></div>
+                        <p class="metric-label">Seguridad de Nivel Bancario</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portafolio de Productos -->
+        <section id="portafolio" class="portfolio">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nuestra Suite de Productos</h2>
+                    <p class="section-description">Un ecosistema completo diseñado para escalar operaciones empresariales con fiabilidad absoluta.</p>
+                </div>
+                <div class="products-grid">
+                    
+                    <div class="product-card">
+                        <div class="product-icon-wrapper">
+                            <i class="ph ph-credit-card" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="product-name">Standard Payments</h3>
+                        <p class="product-desc">Única pasarela en Paraguay con pago multitarjeta (dos tarjetas para un mismo pedido) y arquitectura multitenant. Integrada con Bancard, Upay, Dinelco, Google Pay y QR.</p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-icon-wrapper">
+                            <i class="ph ph-package" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="product-name">Standard Logistics</h3>
+                        <p class="product-desc">Hub de envíos vía API que centraliza a AEX (y eLockers), Rysa, Punto a Punto y Bummer.</p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-icon-wrapper">
+                            <i class="ph ph-arrows-merge" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="product-name">Standard SyncHub</h3>
+                        <p class="product-desc">El puente definitivo entre tu ERP y plataformas como Magento, Shopify o WooCommerce.</p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-icon-wrapper">
+                            <i class="ph ph-database" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="product-name">Standard Catalog</h3>
+                        <p class="product-desc">Omnicanalidad real. Sincroniza tu catálogo con Tienda Naranja y Contimarket.</p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-icon-wrapper">
+                            <i class="ph ph-device-mobile" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="product-name">Standard App</h3>
+                        <p class="product-desc">Transformación de e-commerce PWA/Responsive en apps nativas para App Store y Google Play.</p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-icon-wrapper">
+                            <i class="ph ph-bell-ringing" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="product-name">Standard Notifications</h3>
+                        <p class="product-desc">Sistema inteligente de notificaciones Push para navegadores y móviles.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Solutions by Role -->
+        <section id="soluciones-rol" class="solutions-role">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Construido para cada equipo</h2>
+                    <p class="section-description">Una infraestructura única, valor diferente para cada líder de la operación.</p>
+                </div>
+                <div class="tabs-container">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="tab-dev">CTO & Developers</button>
+                        <button class="tab-btn" data-tab="tab-ops">Operaciones & CX</button>
+                        <button class="tab-btn" data-tab="tab-ceo">CEO & Negocio</button>
+                    </div>
+                    <div class="tabs-content">
+                        <div id="tab-dev" class="tab-pane active">
+                            <div class="tab-pane-inner">
+                                <div class="tab-text">
+                                    <h3>Integración en horas, no en meses.</h3>
+                                    <p>APIs amigables, webhooks en tiempo real, validación de schemas estricta y documentación que tus ingenieros amarán leer.</p>
+                                    <ul class="comparison-list">
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> SDKs en JS, Python y PHP</li>
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> Entornos de Staging dedicados</li>
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> 99.99% Uptime SLA</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-visual dev-visual">
+                                    <div class="code-block minimal">
+                                        <span class="keyword">curl</span> -X POST https://api.standardsa.com/v1/checkout \<br>
+                                        &nbsp;&nbsp;-H <span class="string">"Authorization: Bearer sk_live_..."</span> \<br>
+                                        &nbsp;&nbsp;-d <span class="string">'{"amount": 50000, "currency": "PYG"}'</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-ops" class="tab-pane">
+                            <div class="tab-pane-inner">
+                                <div class="tab-text">
+                                    <h3>Conciliación perfecta, fricción cero.</h3>
+                                    <p>Olvídate del trabajo manual. Ruteo automático de Courier, tracking unificado y liquidaciones claras en tu panel o en tu ERP.</p>
+                                    <ul class="comparison-list">
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> Reportes financieros automáticos</li>
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> Gestión unificada de stock multicanal</li>
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> Reglas de fraude adaptativas</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-visual ops-visual">
+                                    <i class="ph ph-chart-line-up" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-ceo" class="tab-pane">
+                            <div class="tab-pane-inner">
+                                <div class="tab-text">
+                                    <h3>Acelerador de ventas e ingresos.</h3>
+                                    <p>Multiplica tus tasas de conversión con el checkout de menor rechazo de Paraguay. Escala sin topes tecnológicos.</p>
+                                    <ul class="comparison-list">
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> +15% de conversión con Multitarjeta</li>
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> Insights de negocio consolidados</li>
+                                        <li><i class="ph ph-check" aria-hidden="true"></i> Reducción drástica del TCO</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-visual ceo-visual">
+                                    <i class="ph ph-rocket" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diferenciador Técnico -->
+        <section id="diferenciador" class="differentiator">
+            <div class="container">
+                <div class="diff-banner">
+                    <div class="diff-content">
+                        <h2>¿Por qué Standard S.A.?</h2>
+                        <h3><span class="text-highlight">Porque somos agnósticos.</span></h3>
+                        <p>No importa si usas Magento o un desarrollo a medida; nuestra tecnología se adapta a tu stack, no al revés.</p>
+                    </div>
+                    <div class="diff-visual">
+                        <i class="ph ph-plugs-connected diff-icon" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before & After Transformation -->
+        <section id="transformacion" class="transformation">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">El Costo de la Fragmentación vs. La Solución Standard</h2>
+                    <p class="section-description">Centraliza tu operación, elimina errores manuales y multiplica tus canales de venta.</p>
+                </div>
+                <div class="comparison-grid">
+                    <div class="comparison-card before-state">
+                        <div class="comparison-header">
+                            <i class="ph ph-warning-circle" aria-hidden="true"></i>
+                            <h3>El E-commerce Tradicional</h3>
+                        </div>
+                        <ul class="comparison-list">
+                            <li><i class="ph ph-x" aria-hidden="true"></i> Conciliación financiera 100% manual</li>
+                            <li><i class="ph ph-x" aria-hidden="true"></i> Múltiples proveedores y pasarelas aisladas</li>
+                            <li><i class="ph ph-x" aria-hidden="true"></i> Logística desconectada del inventario</li>
+                            <li><i class="ph ph-x" aria-hidden="true"></i> Pérdida de ventas por caídas técnicas</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card after-state">
+                        <div class="comparison-header">
+                            <i class="ph ph-check-circle" aria-hidden="true"></i>
+                            <h3>Ecosistema Standard S.A.</h3>
+                        </div>
+                        <ul class="comparison-list">
+                            <li><i class="ph ph-check" aria-hidden="true"></i> Hub centralizado y automatizado en tiempo real</li>
+                            <li><i class="ph ph-check" aria-hidden="true"></i> Checkout Multitarjeta integrado y unificado</li>
+                            <li><i class="ph ph-check" aria-hidden="true"></i> Ruteo inteligente de Courier directo del stock</li>
+                            <li><i class="ph ph-check" aria-hidden="true"></i> SLA corporativo sin pérdida de transacciones</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Nosotros y Equipo -->
+        <section id="nosotros" class="about">
+            <div class="container text-center">
+                <div class="about-header container-sm mx-auto">
+                    <div class="about-icon">
+                        <i class="ph ph-users-three" aria-hidden="true"></i>
+                    </div>
+                    <h2 class="section-title">Sobre Nosotros</h2>
+                    <p class="about-text">Con 20 años en la industria del software, Standard S.A. nace para resolver las fricciones operativas del comercio local con soluciones que otros consideran imposibles.</p>
+                </div>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="ph ph-user-circle" aria-hidden="true"></i>
+                        </div>
+                        <h3>Andres Caceres</h3>
+                        <p class="member-role">Founder</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="ph ph-user-circle" aria-hidden="true"></i>
+                        </div>
+                        <h3>Osvaldo Britos</h3>
+                        <p class="member-role">Digital Transformation Manager</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="ph ph-user-circle" aria-hidden="true"></i>
+                        </div>
+                        <h3>Miguel Martinez</h3>
+                        <p class="member-role">Comercial Manager</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Climax CTA -->
+        <section class="climax-cta">
+            <div class="container container-sm text-center">
+                <div class="climax-content">
+                    <h2>¿Listo para escalar tu infraestructura?</h2>
+                    <p>Habla con nuestros ingenieros para diseñar la arquitectura exacta que tu operación necesita.</p>
+                    <div class="hero-actions justify-center">
+                        <a href="#contacto" class="btn btn-primary btn-lg">Solicitar Arquitectura</a>
+                        <a href="#api-docs" class="btn btn-outline btn-lg">Documentación API</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-name">Standard S.A.</span>
+                    <p>Infraestructura Tecnológica para E-commerce</p>
+                </div>
+                <div class="footer-links">
+                    <p>&copy; 2026 Standard S.A. Asunción, Paraguay.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
