@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Standard Creative — Presentación comercial</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --ink: #f6f1e7;
+      --muted: #a9b1bb;
+      --line: rgba(246, 241, 231, .14);
+      --panel: #121922;
+      --panel-2: #17212d;
+      --accent: #e7b451;
+      --accent-2: #7ee787;
+      --danger: #ff7b72;
+      --blue: #79c0ff;
+      --shadow: 0 28px 80px rgba(0, 0, 0, .38);
+      --radius: 34px;
+      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Arial, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #05070a;
+      color: var(--ink);
+      margin: 0;
+      font-family: var(--sans);
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+    }
+
+    .deck-shell {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(231, 180, 81, .18), transparent 28%),
+        radial-gradient(circle at 12% 82%, rgba(126, 231, 135, .11), transparent 30%),
+        #05070a;
+    }
+
+    .deck {
+      width: 1920px;
+      height: 1080px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: center center;
+      background: var(--bg);
+      border: 1px solid rgba(246, 241, 231, .10);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .deck::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .32;
+      background-image:
+        linear-gradient(rgba(246, 241, 231, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(246, 241, 231, .035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black 0%, transparent 95%);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 72px 88px 70px;
+      display: none;
+      isolation: isolate;
+    }
+
+    .slide.active { display: block; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 58px;
+      color: var(--muted);
+      font-size: 22px;
+      letter-spacing: .02em;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 750;
+      color: var(--ink);
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid rgba(231, 180, 81, .65);
+      background:
+        linear-gradient(135deg, rgba(231, 180, 81, .95), rgba(231, 180, 81, .18)),
+        #1d1a12;
+      display: grid;
+      place-items: center;
+      color: #120d05;
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 24px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin: 0; }
+
+    h1 {
+      max-width: 1220px;
+      font-size: 108px;
+      line-height: .96;
+      letter-spacing: -.06em;
+      font-weight: 850;
+    }
+
+    h2 {
+      max-width: 1160px;
+      font-size: 76px;
+      line-height: 1.02;
+      letter-spacing: -.045em;
+      font-weight: 840;
+    }
+
+    h3 {
+      font-size: 34px;
+      line-height: 1.13;
+      letter-spacing: -.02em;
+      font-weight: 790;
+    }
+
+    .lead {
+      max-width: 980px;
+      margin-top: 30px;
+      color: #d2d8df;
+      font-size: 34px;
+      line-height: 1.32;
+      letter-spacing: -.015em;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.42;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)), var(--panel);
+      padding: 34px;
+    }
+
+    .hero-card {
+      min-height: 630px;
+      border-radius: 44px;
+      border: 1px solid rgba(246, 241, 231, .13);
+      background:
+        linear-gradient(145deg, rgba(231, 180, 81, .16), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015)),
+        #111821;
+      padding: 42px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      right: -110px;
+      top: -110px;
+      background: rgba(231, 180, 81, .12);
+      filter: blur(4px);
+    }
+
+    .phone {
+      width: 430px;
+      height: 680px;
+      margin: 0 auto;
+      border-radius: 54px;
+      border: 12px solid #05070a;
+      background: #f2efe7;
+      color: #10151b;
+      padding: 28px;
+      box-shadow: 0 28px 60px rgba(0,0,0,.32);
+      position: relative;
+      z-index: 2;
+      transform: rotate(-2deg);
+    }
+
+    .phone .ad-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #3a4048;
+    }
+
+    .product-box {
+      height: 330px;
+      margin: 28px 0;
+      border-radius: 32px;
+      background:
+        linear-gradient(145deg, #e7b451, #f5dfac 55%, #fff9e8);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-box::before,
+    .product-box::after {
+      content: "";
+      position: absolute;
+      border-radius: 38px;
+      background: rgba(16,21,27,.18);
+      transform: rotate(-16deg);
+    }
+
+    .product-box::before { width: 150px; height: 230px; left: 98px; top: 56px; }
+    .product-box::after { width: 80px; height: 170px; right: 108px; bottom: 58px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 999px;
+      padding: 0 18px;
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: #10151b;
+      color: #f6f1e7;
+    }
+
+    .badge.gold { background: var(--accent); color: #120d05; }
+    .badge.green { background: var(--accent-2); color: #06130a; }
+    .badge.blue { background: var(--blue); color: #07111b; }
+    .badge.line { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .price {
+      font-size: 56px;
+      letter-spacing: -.06em;
+      font-weight: 900;
+    }
+
+    .old-price {
+      color: #6b7280;
+      font-size: 28px;
+      text-decoration: line-through;
+      font-weight: 700;
+    }
+
+    .caption {
+      color: #4a5563;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-top: 14px;
+    }
+
+    .list {
+      display: grid;
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .list-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 18px;
+      align-items: start;
+      color: #dce3ea;
+      font-size: 30px;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+    }
+
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 11px;
+      box-shadow: 0 0 0 8px rgba(231, 180, 81, .12);
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 28px;
+      min-height: 190px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .metric .num {
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: -.05em;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .metric .label {
+      margin-top: 16px;
+      color: #d7dee7;
+      font-size: 24px;
+      line-height: 1.24;
+    }
+
+    .metric .source {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 36px;
+    }
+
+    .ad-plain,
+    .ad-rich {
+      border-radius: 36px;
+      min-height: 520px;
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ad-plain {
+      background: #f6f7f9;
+      color: #222832;
+      border: 1px solid #d6dbe2;
+    }
+
+    .ad-rich {
+      background: #10151b;
+      color: #f6f1e7;
+      border: 1px solid rgba(231, 180, 81, .38);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ad-rich::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 70% 24%, rgba(231, 180, 81, .25), transparent 30%),
+        linear-gradient(135deg, rgba(126,231,135,.10), transparent 45%);
+      pointer-events: none;
+    }
+
+    .ad-label {
+      font-size: 22px;
+      font-weight: 850;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .ad-plain .blank-product,
+    .ad-rich .blank-product {
+      height: 260px;
+      border-radius: 30px;
+      margin: 20px 0;
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      font-weight: 800;
+    }
+
+    .ad-plain .blank-product { background: #ffffff; color: #99a1ad; border: 1px solid #e3e6ea; }
+    .ad-rich .blank-product { background: rgba(246,241,231,.12); color: rgba(246,241,231,.78); border: 1px solid rgba(246,241,231,.12); }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 58px;
+    }
+
+    .flow-step {
+      min-height: 300px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      padding: 28px;
+      position: relative;
+    }
+
+    .flow-step .kicker {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 26px;
+    }
+
+    .flow-step p {
+      color: #d3dae2;
+      font-size: 23px;
+      line-height: 1.28;
+      margin-top: 16px;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 46px;
+    }
+
+    .rule {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 24px;
+      background: rgba(255,255,255,.035);
+      min-height: 130px;
+    }
+
+    .rule strong {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 10px;
+      letter-spacing: -.02em;
+    }
+
+    .rule span {
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.28;
+    }
+
+    .whatif {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 34px;
+      margin-top: 42px;
+    }
+
+    .control-card {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(255,255,255,.035);
+      padding: 32px;
+    }
+
+    .control-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 26px;
+    }
+
+    .control-row:last-child { border-bottom: 0; }
+    .control-row span:first-child { color: var(--muted); }
+    .control-row span:last-child { color: var(--ink); font-weight: 780; }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+      align-items: stretch;
+    }
+
+    .plan {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      background: rgba(255,255,255,.035);
+      min-height: 590px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan.recommended {
+      border-color: rgba(231, 180, 81, .65);
+      background: linear-gradient(180deg, rgba(231,180,81,.13), rgba(255,255,255,.035));
+    }
+
+    .plan-name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 29px;
+      font-weight: 850;
+      letter-spacing: -.03em;
+    }
+
+    .plan-price {
+      margin-top: 22px;
+      font-size: 50px;
+      font-weight: 920;
+      letter-spacing: -.06em;
+    }
+
+    .plan-price small {
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    .plan-for {
+      margin-top: 16px;
+      min-height: 72px;
+      color: #d5dce4;
+      font-size: 21px;
+      line-height: 1.22;
+    }
+
+    .plan ul {
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .plan li {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.23;
+    }
+
+    .plan li::before {
+      content: "✓";
+      color: var(--accent-2);
+      margin-right: 8px;
+      font-weight: 900;
+    }
+
+    .plan-limit {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .addon-table {
+      width: 100%;
+      margin-top: 42px;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.032);
+    }
+
+    .addon-table th,
+    .addon-table td {
+      text-align: left;
+      padding: 22px 26px;
+      border-bottom: 1px solid var(--line);
+      font-size: 24px;
+      vertical-align: top;
+    }
+
+    .addon-table th {
+      color: var(--accent);
+      font-size: 19px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .addon-table tr:last-child td { border-bottom: 0; }
+    .addon-table td:nth-child(2) { color: var(--ink); font-weight: 830; white-space: nowrap; }
+    .addon-table td:nth-child(3) { color: var(--muted); }
+
+    .pilot {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 46px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 22px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.034);
+    }
+
+    .timeline-row .day {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 850;
+    }
+
+    .timeline-row .txt {
+      font-size: 24px;
+      color: #dce3ea;
+      line-height: 1.25;
+    }
+
+    .quote {
+      font-family: var(--serif);
+      font-size: 48px;
+      line-height: 1.12;
+      color: #f7ead0;
+      letter-spacing: -.025em;
+    }
+
+    .speaker-note {
+      position: absolute;
+      left: 88px;
+      right: 88px;
+      bottom: 86px;
+      display: none;
+      border: 1px solid rgba(231, 180, 81, .35);
+      border-radius: 24px;
+      background: rgba(231, 180, 81, .08);
+      padding: 20px 24px;
+      color: #ead7ad;
+      font-size: 21px;
+      line-height: 1.28;
+    }
+
+    .show-notes .slide.active .speaker-note { display: block; }
+
+    .source-mark {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .7em;
+      vertical-align: super;
+      margin-left: 3px;
+    }
+
+    .controls {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #d7dde5;
+      background: rgba(5,7,10,.78);
+      border: 1px solid rgba(246,241,231,.16);
+      border-radius: 999px;
+      padding: 10px 14px;
+      backdrop-filter: blur(12px);
+      font-size: 14px;
+    }
+
+    button {
+      border: 1px solid rgba(246,241,231,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+      min-height: 36px;
+      padding: 0 14px;
+    }
+
+    button:hover,
+    button:focus-visible {
+      outline: none;
+      border-color: rgba(231,180,81,.8);
+      background: rgba(231,180,81,.16);
+    }
+
+    .slide-count {
+      min-width: 72px;
+      text-align: center;
+      font-family: var(--mono);
+      color: var(--muted);
+    }
+
+    .sources-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 28px;
+      margin-top: 42px;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+
+    .sources-list a {
+      color: #d6dde6;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(231,180,81,.28);
+    }
+
+    .kbd {
+      font-family: var(--mono);
+      color: var(--accent);
+    }
+
+    @media print {
+      html, body {
+        width: auto;
+        height: auto;
+        overflow: visible;
+        background: white;
+      }
+      .deck-shell { display: block; background: white; }
+      .deck {
+        transform: none !important;
+        width: 1920px;
+        height: auto;
+        box-shadow: none;
+        border: 0;
+        overflow: visible;
+      }
+      .slide {
+        display: block !important;
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        page-break-after: always;
+        background: var(--bg);
+      }
+      .controls { display: none; }
+      .speaker-note { display: none !important; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .slide.active h1,
+      .slide.active h2,
+      .slide.active .lead,
+      .slide.active .panel,
+      .slide.active .hero-card,
+      .slide.active .plans,
+      .slide.active .flow,
+      .slide.active .rules-grid {
+        animation: rise .42s ease both;
+      }
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    /* Ejemplos reales (antes vs. después) — screenshots de anuncios de catálogo */
+    .badge.danger { background: rgba(255,123,114,.16); color: var(--danger); border: 1px solid rgba(255,123,114,.5); }
+    .proof {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 16px;
+    }
+    .proof-col { display: flex; flex-direction: column; align-items: center; }
+    .proof-arrow { align-self: center; font-size: 46px; font-weight: 800; color: var(--accent); padding-top: 150px; }
+    .proof-row { display: flex; gap: 18px; }
+    .proof-cap { font-size: 18px; color: var(--muted); margin-top: 16px; max-width: 340px; text-align: center; line-height: 1.5; }
+    .proof-cap b { color: var(--ink); font-weight: 750; }
+    .shot {
+      width: 258px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+      background: #0d1218;
+    }
+    .shot.antes { width: 286px; border-color: rgba(255,123,114,.5); }
+    .shot.rich { border-color: rgba(231,180,81,.45); }
+    .shot img { width: 100%; height: auto; display: block; }
+
+  </style>
+</head>
+<body>
+  <div class="deck-shell" id="shell">
+    <main class="deck" id="deck" aria-live="polite">
+      <section class="slide active" data-title="Portada">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>Presentación comercial · catálogo dinámico</div></div>
+        <div class="grid-2">
+          <div>
+            <div class="eyebrow">Creative automation para retail</div>
+            <h1>Convertimos tu catálogo en anuncios que venden.</h1>
+            <p class="lead">Una plantilla visual se transforma automáticamente en piezas por SKU, con precio, oferta, banco, campaña y reglas comerciales siempre correctas.</p>
+          </div>
+          <div class="hero-card">
+            <div class="phone" aria-label="Ejemplo de anuncio enriquecido">
+              <div class="ad-top"><span>Standard Creative</span><span>LIVE</span></div>
+              <div class="product-box"><span class="badge">Jueves Banco</span></div>
+              <div class="badge gold">-30% hoy</div>
+              <div class="price-row"><div class="price">Gs. 699.000</div></div>
+              <div class="old-price">Gs. 999.000</div>
+              <p class="caption">Cada producto con su mensaje, su precio y su diseño correcto.</p>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">Apertura: presentar Standard Creative como una capa de performance sobre la inversión publicitaria que la empresa ya hace.</div>
+      </section>
+
+      <section class="slide" data-title="Problema">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>01 · El problema</div></div>
+        <div class="eyebrow">El catálogo cambia todos los días</div>
+        <h2>Pero la creatividad de catálogo suele quedarse genérica.</h2>
+        <div class="list">
+          <div class="list-item"><span class="dot"></span><span>Las imágenes de producto no comunican promoción, banco, urgencia ni beneficio.</span></div>
+          <div class="list-item"><span class="dot"></span><span>El equipo de diseño no puede producir una pieza manual por cada SKU.</span></div>
+          <div class="list-item"><span class="dot"></span><span>El performance team termina usando anuncios de catálogo visualmente pobres.</span></div>
+          <div class="list-item"><span class="dot"></span><span>Cuando cambia precio, stock o campaña, la operación manual se vuelve riesgosa.</span></div>
+        </div>
+        <div class="speaker-note">Idea central: el problema no es sólo diseño; es velocidad operativa, consistencia y conversión.</div>
+      </section>
+
+      <section class="slide" data-title="Oportunidad">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>02 · La oportunidad</div></div>
+        <div class="grid-2">
+          <div>
+            <div class="eyebrow">El feed ya tiene los datos</div>
+            <h2>Falta convertirlos en creatividad.</h2>
+            <p class="lead">Título, precio, oferta, marca, categoría, imagen, descuento y etiquetas comerciales pueden controlar lo que se ve en cada pieza.</p>
+          </div>
+          <div class="panel">
+            <h3>De datos a anuncio</h3>
+            <div class="flow" style="grid-template-columns: 1fr; margin-top: 28px; gap: 14px;">
+              <div class="timeline-row"><div class="day">FEED</div><div class="txt">Productos, precios, imágenes, categorías, etiquetas.</div></div>
+              <div class="timeline-row"><div class="day">REGLAS</div><div class="txt">Oferta, jueves, banco, categoría, descuento, campaña.</div></div>
+              <div class="timeline-row"><div class="day">PIEZA</div><div class="txt">Anuncio enriquecido por SKU, listo para Meta.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">Explicar que no pedimos cargar datos nuevos: usamos lo que ya existe en el catálogo.</div>
+      </section>
+
+      <section class="slide" data-title="Antes y después">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>03 · Antes vs. después</div></div>
+        <div class="eyebrow">Enriched catalog ads</div>
+        <h2>El mismo producto puede verse genérico o vender con contexto.</h2>
+        <div class="before-after">
+          <div class="ad-plain">
+            <div class="ad-label">Antes · catálogo común</div>
+            <div class="blank-product">PRODUCT.JPG</div>
+            <div>
+              <h3 style="color:#222832;">Nombre del producto</h3>
+              <div class="price-row"><div class="price" style="font-size:48px;">Gs. 699.000</div></div>
+              <p class="caption">Sin marca, sin campaña, sin urgencia.</p>
+            </div>
+          </div>
+          <div class="ad-rich">
+            <div style="position:relative; z-index:1;">
+              <div class="ad-label">Después · Standard Creative</div>
+              <div class="blank-product">PRODUCTO + BRANDING</div>
+              <div class="badge gold">Jueves Banco · 12 cuotas</div>
+              <div class="price-row"><div class="price" style="font-size:54px;">Gs. 699.000</div><div class="old-price" style="color:#abb3bd;">Gs. 999.000</div></div>
+              <p class="small" style="margin-top:16px; color:#e4e9ef;">Promoción, precio, identidad y regla comercial en la misma pieza.</p>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">Anclar esta slide en el concepto de Marpipe/Celtra: enriquecer el catálogo, no sólo diseñar banners.</div>
+      </section>
+
+
+      <section class="slide" data-title="Ejemplos reales">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>04 · Ejemplos reales</div></div>
+        <div class="eyebrow">Del catálogo plano al anuncio que vende</div>
+        <h2 style="font-size:52px; margin:0 0 4px;">Así se ve la diferencia en el feed real.</h2>
+        <div class="proof">
+          <div class="proof-col">
+            <span class="badge danger">Antes · catálogo genérico</span>
+            <div class="shot antes" style="margin-top:16px;"><img src="assets/ad-antes-tradicional.jpg" alt="Anuncio de catálogo genérico: solo fotos de producto, sin marca ni precio"></div>
+            <div class="proof-cap">Foto y grilla, nada más. <b>Sin marca, sin precio, sin promo, sin envío</b> — el usuario no sabe por qué comprar acá.</div>
+          </div>
+          <div class="proof-arrow">→</div>
+          <div class="proof-col">
+            <span class="badge gold">Después · pieza enriquecida</span>
+            <div class="proof-row" style="margin-top:16px;">
+              <div class="shot rich"><img src="assets/ad-despues-metasports.jpg" alt="Anuncio enriquecido con marca, precio y branding"></div>
+              <div class="shot rich"><img src="assets/ad-despues-nissei.jpg" alt="Anuncio enriquecido con marca, precio, envíos a todo el país"></div>
+              <div class="shot rich"><img src="assets/ad-despues-renova.jpg" alt="Anuncio enriquecido con marca, precio y envíos"></div>
+            </div>
+            <div class="proof-cap" style="max-width:1000px;"><b>Marca, precio, promoción, cuotas y envío</b> en el mismo impacto visual — y cada SKU del catálogo sale con el mismo sistema.</div>
+          </div>
+        </div>
+        <div class="speaker-note">La última pieza (antes) es un anuncio de catálogo común: producto suelto, sin contexto comercial. Las tres de la derecha son el tipo de pieza enriquecida que entregamos — misma data del feed, convertida en creatividad con marca, precio, promo y envío. No es rediseñar a mano: una plantilla + reglas rinden todo el catálogo así.</div>
+      </section>
+
+      <section class="slide" data-title="Qué hace">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>04 · Qué hace</div></div>
+        <div class="eyebrow">Diseñá una vez. Publicá para todo el catálogo.</div>
+        <h2>Standard Creative genera piezas por producto y mantiene el feed actualizado.</h2>
+        <div class="flow">
+          <div class="flow-step"><div class="kicker">01</div><h3>Plantilla visual</h3><p>Diseño reusable con marca, estilos, textos y espacios dinámicos.</p></div>
+          <div class="flow-step"><div class="kicker">02</div><h3>Datos del producto</h3><p>Título, precio, oferta, imagen, categoría, marca y etiquetas.</p></div>
+          <div class="flow-step"><div class="kicker">03</div><h3>Render por SKU</h3><p>Una pieza individual para cada producto del catálogo.</p></div>
+          <div class="flow-step"><div class="kicker">04</div><h3>Feed de salida</h3><p>Imágenes listas para campañas de catálogo en Meta.</p></div>
+        </div>
+        <div class="speaker-note">Decir explícitamente: no vendemos un editor aislado; vendemos el circuito plantilla → render → feed.</div>
+      </section>
+
+      <section class="slide" data-title="Reglas comerciales">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>05 · Reglas comerciales</div></div>
+        <div class="eyebrow">Promos que aparecen cuando corresponde</div>
+        <h2>El usuario debe pensar en negocio, no en campos técnicos.</h2>
+        <div class="rules-grid">
+          <div class="rule"><strong>Día de semana</strong><span>Mostrar un logo o sticker sólo los jueves.</span></div>
+          <div class="rule"><strong>Promoción bancaria</strong><span>Mostrar Banco Itaú, Ueno, Basa o Familiar según regla.</span></div>
+          <div class="rule"><strong>Oferta activa</strong><span>Mostrar “Oferta” sólo si hay precio promocional.</span></div>
+          <div class="rule"><strong>Descuento mínimo</strong><span>Mostrar “-30%” sólo si el descuento supera un umbral.</span></div>
+          <div class="rule"><strong>Categoría o marca</strong><span>Usar diseño distinto para electro, moda, muebles o marcas.</span></div>
+          <div class="rule"><strong>Temporada</strong><span>Black Friday, Día de la Madre, Navidad, liquidación.</span></div>
+        </div>
+        <div class="speaker-note">Esta slide también marca una decisión de producto: reemplazar custom_label_0 por lenguaje comercial entendible.</div>
+      </section>
+
+      <section class="slide" data-title="What-if">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>06 · Simulador what-if</div></div>
+        <div class="eyebrow">Validar antes de publicar</div>
+        <h2>Probá “qué pasaría si…” sin esperar al día real.</h2>
+        <div class="whatif">
+          <div class="control-card">
+            <h3>Escenario simulado</h3>
+            <div class="control-row"><span>Día</span><span>Jueves</span></div>
+            <div class="control-row"><span>Oferta</span><span>Activa</span></div>
+            <div class="control-row"><span>Banco</span><span>Ueno</span></div>
+            <div class="control-row"><span>Categoría</span><span>Electro</span></div>
+          </div>
+          <div class="hero-card" style="min-height:480px;">
+            <div class="phone" style="width:340px;height:520px;padding:22px;border-radius:46px;">
+              <div class="ad-top" style="font-size:14px;"><span>PREVIEW</span><span>WHAT-IF</span></div>
+              <div class="product-box" style="height:230px;margin:22px 0;"><span class="badge" style="font-size:14px;">Jueves Ueno</span></div>
+              <div class="badge gold" style="font-size:14px;">12 cuotas</div>
+              <div class="price-row"><div class="price" style="font-size:38px;">Gs. 699.000</div></div>
+              <p class="caption" style="font-size:18px;">Así se verá cuando la regla esté activa.</p>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">Valor para el cliente: evita publicar mal y permite aprobar campañas antes del jueves, Black Friday o fecha especial.</div>
+      </section>
+
+      <section class="slide" data-title="Testing">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>07 · Testing</div></div>
+        <div class="eyebrow">No adivinar: probar</div>
+        <h2>El mercado compite con variantes, no con una sola pieza.</h2>
+        <div class="grid-4" style="margin-top:48px;">
+          <div class="panel"><span class="badge line">Variante A</span><h3 style="margin-top:26px;">Precio protagonista</h3><p class="small" style="margin-top:16px;">Ideal para productos comparables.</p></div>
+          <div class="panel"><span class="badge line">Variante B</span><h3 style="margin-top:26px;">Descuento protagonista</h3><p class="small" style="margin-top:16px;">Ideal para liquidaciones.</p></div>
+          <div class="panel"><span class="badge line">Variante C</span><h3 style="margin-top:26px;">Imagen protagonista</h3><p class="small" style="margin-top:16px;">Ideal para moda o lifestyle.</p></div>
+          <div class="panel"><span class="badge line">Variante D</span><h3 style="margin-top:26px;">Banco / cuotas</h3><p class="small" style="margin-top:16px;">Ideal para retail financiero.</p></div>
+        </div>
+        <p class="lead" style="max-width:1250px; margin-top:44px;">Cada campaña permite aprender qué combinación visual mejora CTR, CPA, conversión y ROAS.</p>
+        <div class="speaker-note">Vincular con casos de Confect y Marpipe: la propuesta no es estética; es aprendizaje de performance.</div>
+      </section>
+
+      <section class="slide" data-title="Beneficios">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>08 · Beneficios</div></div>
+        <div class="eyebrow">Performance + operación</div>
+        <h2>Más claridad comercial, menos trabajo repetitivo.</h2>
+        <div class="grid-3" style="margin-top:48px;">
+          <div class="panel"><h3>Más atención antes del clic</h3><p class="small" style="margin-top:16px;">La pieza comunica oferta, beneficio y marca en el mismo impacto visual.</p></div>
+          <div class="panel"><h3>Menos errores operativos</h3><p class="small" style="margin-top:16px;">Precios, descuentos y stickers se controlan por datos y reglas.</p></div>
+          <div class="panel"><h3>Más velocidad de campaña</h3><p class="small" style="margin-top:16px;">Una promo puede actualizar miles de SKUs sin exportaciones manuales.</p></div>
+        </div>
+        <div class="grid-3" style="margin-top:24px;">
+          <div class="panel"><h3>Consistencia de marca</h3><p class="small" style="margin-top:16px;">Todos los productos salen con el mismo sistema visual.</p></div>
+          <div class="panel"><h3>Mejor intención</h3><p class="small" style="margin-top:16px;">El usuario llega al sitio con más contexto y menos sorpresa.</p></div>
+          <div class="panel"><h3>Aprendizaje acumulado</h3><p class="small" style="margin-top:16px;">Cada test mejora la siguiente plantilla.</p></div>
+        </div>
+        <div class="speaker-note">Cierre de valor: no reemplaza al equipo creativo; elimina producción repetitiva y hace que performance aprenda más rápido.</div>
+      </section>
+
+      <section class="slide" data-title="Benchmarks">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>09 · Benchmarks de mercado</div></div>
+        <div class="eyebrow">Referencias internacionales</div>
+        <h2>El mercado ya compra esta categoría por impacto en ROAS, CPA y conversión.</h2>
+        <div class="grid-4" style="margin-top:46px;">
+          <div class="metric"><div class="num">+34%</div><div class="label">ROAS en Arena con catálogo enriquecido.</div><div class="source">Confect case study <span class="source-mark">[3]</span></div></div>
+          <div class="metric"><div class="num">-50%</div><div class="label">CPA reportado por Sinnerup con feed multi-variante.</div><div class="source">Confect blog <span class="source-mark">[4]</span></div></div>
+          <div class="metric"><div class="num">~20%</div><div class="label">Lift promedio comunicado para catálogos enriquecidos.</div><div class="source">Marpipe <span class="source-mark">[7]</span></div></div>
+          <div class="metric"><div class="num">-16%</div><div class="label">CPA promedio menor en Meta con Catalog Product Video.</div><div class="source">Smartly <span class="source-mark">[5]</span></div></div>
+        </div>
+        <p class="small" style="margin-top:34px; max-width:1320px;">Estos números no son garantía para un cliente nuevo; son referencias de potencial. La propuesta correcta es medir un piloto controlado de 30 días.</p>
+        <div class="speaker-note">Decirlo con cuidado: usamos benchmarks para abrir conversación, no para prometer resultados idénticos.</div>
+      </section>
+
+      <section class="slide" data-title="Implementación">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>10 · Implementación</div></div>
+        <div class="eyebrow">De catálogo a campaña</div>
+        <h2>Implementación simple en cuatro pasos.</h2>
+        <div class="flow">
+          <div class="flow-step"><div class="kicker">PASO 1</div><h3>Conectar catálogo</h3><p>Google Shopping, XML, CSV, Meta feed o integración a medida.</p></div>
+          <div class="flow-step"><div class="kicker">PASO 2</div><h3>Crear plantillas</h3><p>Always-on, oferta, banco, temporada, categoría.</p></div>
+          <div class="flow-step"><div class="kicker">PASO 3</div><h3>Definir reglas</h3><p>Día, campaña, descuento, categoría, marca, etiqueta.</p></div>
+          <div class="flow-step"><div class="kicker">PASO 4</div><h3>Publicar y medir</h3><p>Feed final, renders por producto y reporte de performance.</p></div>
+        </div>
+        <div class="speaker-note">Enfatizar que el cliente puede empezar con un piloto sin migrar toda su operación.</div>
+      </section>
+
+      <section class="slide" data-title="Demo">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>11 · Demo comercial</div></div>
+        <div class="grid-2">
+          <div>
+            <div class="eyebrow">Demo de 20 minutos</div>
+            <h2>Mostramos su catálogo convertido en anuncios.</h2>
+            <p class="lead">La demo no debe ser abstracta: tomamos productos reales, aplicamos una plantilla y simulamos una promoción.</p>
+          </div>
+          <div class="panel">
+            <div class="timeline">
+              <div class="timeline-row"><div class="day">01</div><div class="txt">Elegimos 10 productos reales del catálogo.</div></div>
+              <div class="timeline-row"><div class="day">02</div><div class="txt">Aplicamos branding, precio, oferta y badge.</div></div>
+              <div class="timeline-row"><div class="day">03</div><div class="txt">Simulamos jueves bancario con what-if.</div></div>
+              <div class="timeline-row"><div class="day">04</div><div class="txt">Mostramos el feed y cómo saldría en Meta.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">Este formato replica lo que el mercado vende: “vemos tu catálogo enriquecido en vivo”.</div>
+      </section>
+
+      <section class="slide" data-title="Planes">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>12 · Planes y precios</div></div>
+        <div class="eyebrow">Precio transparente. Escala por catálogo.</div>
+        <h2 style="font-size:64px;">Planes alineados con la categoría internacional.</h2>
+        <div class="plans">
+          <div class="plan">
+            <div class="plan-name">Trial</div>
+            <div class="plan-price">US$0 <small>/ 30 días</small></div>
+            <div class="plan-for">Para probar con catálogo real.</div>
+            <ul>
+              <li>1 plantilla de muestra</li>
+              <li>Productos renderizados</li>
+              <li>Simulación de promo</li>
+              <li>Demo guiada</li>
+            </ul>
+            <div class="plan-limit">Piloto controlado</div>
+          </div>
+          <div class="plan">
+            <div class="plan-name">Local</div>
+            <div class="plan-price">US$299 <small>/ mes</small></div>
+            <div class="plan-for">Una marca con un mercado principal.</div>
+            <ul>
+              <li>1 catálogo</li>
+              <li>1 mercado</li>
+              <li>Feed para Meta</li>
+              <li>Reglas básicas</li>
+              <li>What-if</li>
+            </ul>
+            <div class="plan-limit">Hasta 3.000 productos</div>
+          </div>
+          <div class="plan recommended">
+            <div class="plan-name">Pro <span class="badge gold" style="font-size:12px; min-height:28px;">Recomendado</span></div>
+            <div class="plan-price">US$499 <small>/ mes</small></div>
+            <div class="plan-for">Retail con campañas frecuentes.</div>
+            <ul>
+              <li>Hasta 3 mercados</li>
+              <li>Reglas avanzadas</li>
+              <li>Promos por banco/día</li>
+              <li>Variantes A/B</li>
+              <li>Más plantillas activas</li>
+            </ul>
+            <div class="plan-limit">Hasta 10.000 productos</div>
+          </div>
+          <div class="plan">
+            <div class="plan-name">Global</div>
+            <div class="plan-price">US$999 <small>/ mes</small></div>
+            <div class="plan-for">Empresas con varios mercados o campañas.</div>
+            <ul>
+              <li>Múltiples campañas</li>
+              <li>Calendario promocional</li>
+              <li>Reportes ejecutivos</li>
+              <li>Soporte prioritario</li>
+              <li>Optimización mensual</li>
+            </ul>
+            <div class="plan-limit">Hasta 30.000 productos</div>
+          </div>
+          <div class="plan">
+            <div class="plan-name">Enterprise</div>
+            <div class="plan-price">Custom <small>desde US$2.500</small></div>
+            <div class="plan-for">Grandes retailers, grupos o agencias.</div>
+            <ul>
+              <li>SLA</li>
+              <li>Integraciones a medida</li>
+              <li>Múltiples feeds</li>
+              <li>Soporte dedicado</li>
+              <li>Contrato personalizado</li>
+            </ul>
+            <div class="plan-limit">A medida</div>
+          </div>
+        </div>
+        <div class="speaker-note">Recomendación: empujar Pro como plan principal; Trial baja fricción y Enterprise se cotiza.</div>
+      </section>
+
+      <section class="slide" data-title="Add-ons">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>13 · Add-ons</div></div>
+        <div class="eyebrow">Servicios y capacidad extra</div>
+        <h2>Add-ons para adaptar la oferta sin romper los planes.</h2>
+        <table class="addon-table" aria-label="Add-ons de Standard Creative">
+          <thead><tr><th>Add-on</th><th>Precio sugerido</th><th>Cuándo aplica</th></tr></thead>
+          <tbody>
+            <tr><td>Feed o mercado adicional</td><td>US$299/mes</td><td>Otro país, marca o feed separado.</td></tr>
+            <tr><td>Gestión de feed asistida</td><td>US$0,05 por SKU/mes · mínimo US$400</td><td>Limpieza, transformación y mantenimiento del feed.</td></tr>
+            <tr><td>Plantilla diseñada por nuestro equipo</td><td>US$150–300 una vez</td><td>Nuevas líneas visuales o campañas especiales.</td></tr>
+            <tr><td>Implementación inicial</td><td>US$500–1.500 una vez</td><td>Setup, marca, catálogo, primera plantilla y QA.</td></tr>
+            <tr><td>Soporte gestionado mensual</td><td>US$500+/mes</td><td>Cuando el cliente quiere que operemos campañas o promos.</td></tr>
+          </tbody>
+        </table>
+        <div class="speaker-note">Mensaje: SaaS base simple + servicios opcionales para clientes que no quieren operar.</div>
+      </section>
+
+      <section class="slide" data-title="Piloto">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>14 · Piloto</div></div>
+        <div class="eyebrow">Plan de entrada</div>
+        <h2>30 días para validar impacto con datos propios.</h2>
+        <div class="pilot">
+          <div class="panel">
+            <h3>Alcance</h3>
+            <div class="list" style="gap:14px;">
+              <div class="list-item" style="font-size:25px;"><span class="dot"></span><span>1 catálogo.</span></div>
+              <div class="list-item" style="font-size:25px;"><span class="dot"></span><span>2 plantillas: always-on y promo.</span></div>
+              <div class="list-item" style="font-size:25px;"><span class="dot"></span><span>1 regla comercial: banco, día, categoría o descuento.</span></div>
+              <div class="list-item" style="font-size:25px;"><span class="dot"></span><span>Feed final para Meta.</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Métricas</h3>
+            <div class="grid-3" style="margin-top:26px; gap:14px;">
+              <div class="metric" style="min-height:140px;"><div class="num" style="font-size:42px;">CTR</div><div class="label" style="font-size:20px;">Atención</div></div>
+              <div class="metric" style="min-height:140px;"><div class="num" style="font-size:42px;">CPA</div><div class="label" style="font-size:20px;">Costo</div></div>
+              <div class="metric" style="min-height:140px;"><div class="num" style="font-size:42px;">ROAS</div><div class="label" style="font-size:20px;">Retorno</div></div>
+              <div class="metric" style="min-height:140px;"><div class="num" style="font-size:42px;">CVR</div><div class="label" style="font-size:20px;">Conversión</div></div>
+              <div class="metric" style="min-height:140px;"><div class="num" style="font-size:42px;">Horas</div><div class="label" style="font-size:20px;">Ahorro operativo</div></div>
+              <div class="metric" style="min-height:140px;"><div class="num" style="font-size:42px;">SKUs</div><div class="label" style="font-size:20px;">Piezas generadas</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">Cierre del piloto: si supera al catálogo actual o reduce operación claramente, se pasa a Pro o Global.</div>
+      </section>
+
+      <section class="slide" data-title="Cierre">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>15 · Cierre</div></div>
+        <div class="grid-2">
+          <div>
+            <div class="eyebrow">Frase de cierre</div>
+            <p class="quote">“Si ya invertís en Meta, Google o TikTok, el catálogo enriquecido no es un gasto más: es una capa de performance sobre la inversión que ya estás haciendo.”</p>
+          </div>
+          <div class="panel">
+            <h3>Qué compra el cliente</h3>
+            <div class="list" style="gap:16px;">
+              <div class="list-item" style="font-size:27px;"><span class="dot"></span><span>Más piezas sin más trabajo manual.</span></div>
+              <div class="list-item" style="font-size:27px;"><span class="dot"></span><span>Promos visualmente correctas por producto.</span></div>
+              <div class="list-item" style="font-size:27px;"><span class="dot"></span><span>Plantillas medibles y optimizables.</span></div>
+              <div class="list-item" style="font-size:27px;"><span class="dot"></span><span>Un sistema para vender mejor, no sólo para diseñar.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">Terminar ofreciendo demo con catálogo real. No pedir “una reunión general”: pedir 20 minutos y 10 productos.</div>
+      </section>
+
+      <section class="slide" data-title="Fuentes">
+        <div class="topbar"><div class="brand"><div class="mark">SC</div> Standard Creative</div><div>Fuentes</div></div>
+        <div class="eyebrow">Referencias usadas</div>
+        <h2 style="font-size:58px;">Benchmark competitivo y pricing.</h2>
+        <div class="sources-list">
+          <a href="https://confect.io/features/assets-design-rules">[1] Confect · Smart rules</a>
+          <a href="https://confect.io/product/performance">[2] Confect · Performance</a>
+          <a href="https://confect.io/cases/arena-sports-increased-catalog-ads-roas-by-34-with-confect">[3] Confect · Arena case</a>
+          <a href="https://confect.io/blog/sinnerup-multi-variant-feed">[4] Confect · Sinnerup case</a>
+          <a href="https://www.smartly.io/product-features/dynamic-product-ads">[5] Smartly · Dynamic Product Ads</a>
+          <a href="https://www.smartly.io/product-features/dynamic-creative-optimization">[6] Smartly · DCO</a>
+          <a href="https://lp.marpipe.com/dco-advertising">[7] Marpipe · DCO advertising</a>
+          <a href="https://www.marpipe.com/pricing">[8] Marpipe · Pricing</a>
+          <a href="https://lp.marpipe.com/dynamic-product-ad-tool">[9] Marpipe · DPA tool</a>
+          <a href="https://www.hunchads.com/solutions/dynamic-product-templates">[10] Hunch · Product templates</a>
+          <a href="https://www.hunchads.com/solutions/product-focused-dynamic-ads">[11] Hunch · Product-focused ads</a>
+          <a href="https://www.hunchads.com/hunch-vs-smartly-io">[18] Hunch · Pricing comparison</a>
+          <a href="https://confect.io/pricing">[17] Confect · Pricing</a>
+          <a href="https://celtra.com/pricing/">[19] Celtra · Pricing</a>
+        </div>
+        <p class="small" style="position:absolute; bottom:80px; left:88px; right:88px;">Navegación: flechas o espacio para avanzar, <span class="kbd">N</span> para notas, <span class="kbd">F</span> para pantalla completa.</p>
+      </section>
+    </main>
+
+    <nav class="controls" aria-label="Controles de presentación">
+      <button id="prev" type="button">←</button>
+      <span class="slide-count" id="count">1 / 16</span>
+      <button id="next" type="button">→</button>
+      <button id="notes" type="button">Notas</button>
+      <button id="fullscreen" type="button">Pantalla</button>
+    </nav>
+  </div>
+
+  <script>
+    const deck = document.getElementById('deck')
+    const shell = document.getElementById('shell')
+    const slides = Array.from(document.querySelectorAll('.slide'))
+    const count = document.getElementById('count')
+    const key = 'standard-creative-deck-slide'
+    let index = Number.parseInt(localStorage.getItem(key) || '0', 10)
+    if (!Number.isFinite(index) || index < 0 || index >= slides.length) index = 0
+
+    function fit () {
+      const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080)
+      deck.style.transform = `translate(-50%, -50%) scale(${scale})`
+    }
+
+    function show (nextIndex) {
+      index = Math.max(0, Math.min(slides.length - 1, nextIndex))
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index))
+      count.textContent = `${index + 1} / ${slides.length}`
+      localStorage.setItem(key, String(index))
+      document.title = `${slides[index].dataset.title || 'Slide'} · Standard Creative`
+    }
+
+    function next () { show(index + 1) }
+    function prev () { show(index - 1) }
+
+    document.getElementById('next').addEventListener('click', next)
+    document.getElementById('prev').addEventListener('click', prev)
+    document.getElementById('notes').addEventListener('click', () => document.body.classList.toggle('show-notes'))
+    document.getElementById('fullscreen').addEventListener('click', async () => {
+      if (!document.fullscreenElement) await shell.requestFullscreen?.()
+      else await document.exitFullscreen?.()
+    })
+
+    window.addEventListener('resize', fit)
+    window.addEventListener('keydown', (event) => {
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); next() }
+      if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); prev() }
+      if (event.key === 'Home') show(0)
+      if (event.key === 'End') show(slides.length - 1)
+      if (event.key.toLowerCase() === 'n') document.body.classList.toggle('show-notes')
+      if (event.key.toLowerCase() === 'f') document.getElementById('fullscreen').click()
+    })
+
+    fit()
+    show(index)
+  </script>
+</body>
+</html>
